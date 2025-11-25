@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - EasyTaobao</title>
+
+    <!-- CSS COMPLET AVEC DESIGN MODERNE -->
+    <style>
+        /* ===== VARIABLES ET RESET ===== */
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #457b9d;
+            --accent: #ff9e00;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --success: #2a9d8f;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--dark);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTIONS ===== */
+        .hero {
+            background: linear-gradient(rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.7)),
+                url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== SECTIONS PRINCIPALES ===== */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            color: var(--dark);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* ===== SECTION ABOUT ===== */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== SECTION MISSION ===== */
+        .mission-section {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .values-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== SECTION ÉQUIPE ===== */
+        .team-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 4px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .member-contact {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .values-grid,
+            .team-grid,
+            .stats-grid {
+                flex-direction: column;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+    </style>
+</head>
+
+<body class="gradient-bg">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="EasyTaobao" class="logo-img">
+                    <span>Easy<span style="color: var(--accent);">Taobao</span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commande.html">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="apropos.html" style="color: var(--primary);">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>À propos de EasyTaobao</h1>
+            <p>Votre pont vers Taobao au Gabon depuis 2023</p>
+            <a href="produits.html" class="btn">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Contenu Principal -->
+    <main class="main-content fade-in">
+        <div class="container">
+            <!-- Section Notre histoire -->
+            <section>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title" style="text-align: left;">Notre histoire</h2>
+                        <p><strong>EasyTaobao</strong> est né en 2023 de la constatation que de nombreux Gabonais
+                            souhaitaient accéder aux produits disponibles sur Taobao, mais se heurtaient à des barrières
+                            linguistiques, techniques et logistiques.</p>
+                        <p>Fondé par des entrepreneurs gabonais passionnés par le e-commerce et les relations
+                            commerciales sino-africaines, notre service vise à simplifier le processus d'achat pour nos
+                            clients.</p>
+                        <p>Aujourd'hui, nous sommes fiers d'avoir livré des centaines de commandes à travers tout le
+                            Gabon, permettant à nos clients d'accéder à des produits uniques, de qualité et à des prix
+                            compétitifs directement depuis la Chine.</p>
+
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="contact.html" class="btn">Nous contacter</a>
+                            <a href="produits.html" class="btn btn-outline">Voir nos produits</a>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            alt="Équipe EasyTaobao">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Statistiques -->
+            <section class="mission-section">
+                <h2 class="section-title" style="color: white;">Notre impact</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <div class="stat-label">Commandes livrées</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <div class="stat-label">Villes desservies</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15-25j</span>
+                        <div class="stat-label">Délai moyen</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Notre mission -->
+            <section class="mission-section">
+                <h2 class="section-title" style="color: white;">Notre mission</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Nous croyons que chaque Gabonais devrait pouvoir
+                        accéder aux produits innovants et abordables disponibles sur le marché chinois, sans barrières
+                        linguistiques ou logistiques.</p>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Accessibilité</h3>
+                            <p>Rendre Taobao accessible à tous les Gabonais sans compétences techniques</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3>Transparence</h3>
+                            <p>Des prix clairs sans frais cachés, devis détaillé inclus</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3>Fiabilité</h3>
+                            <p>Livraison garantie partout au Gabon avec suivi en temps réel</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Notre équipe -->
+            <section>
+                <h2 class="section-title">Notre équipe</h2>
+                <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: var(--gray);">
+                    Une équipe passionnée dédiée à votre satisfaction
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">JN</div>
+                        <h3>Jean Nzikou</h3>
+                        <p class="member-role">Fondateur & CEO</p>
+                        <p>Expert en e-commerce avec 3 ans d'expérience dans le commerce international Chine-Afrique.
+                        </p>
+                        <div class="member-contact">
+                            <a href="https://wa.me/24101234567" class="contact-btn">
+                                <i class="fab fa-whatsapp"></i> Contacter
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">MO</div>
+                        <h3>Marina Okome</h3>
+                        <p class="member-role">Responsable Logistique</p>
+                        <p>Spécialiste en supply chain et gestion des importations depuis la Chine vers l'Afrique.</p>
+                        <div class="member-contact">
+                            <a href="https://wa.me/24101234568" class="contact-btn">
+                                <i class="fab fa-whatsapp"></i> Contacter
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">PM</div>
+                        <h3>Paul Mba</h3>
+                        <p class="member-role">Service Client</p>
+                        <p>Votre interlocuteur privilégié pour toutes vos questions et le suivi de commandes.</p>
+                        <div class="member-contact">
+                            <a href="https://wa.me/24101234569" class="contact-btn">
+                                <i class="fab fa-whatsapp"></i> Contacter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Easy<span style="color: var(--accent);">Taobao</span></h3>
+                    <p>Votre pont vers Taobao au Gabon. Nous facilitons vos achats en Chine avec livraison directe au
+                        Gabon.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commande.html">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +86 190 7982 4068</li>
+                        <li><i class="fas fa-envelope"></i> contact@easytaobao.ga</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Libreville, Gabon</li>
+                        <li><i class="fab fa-whatsapp"></i> +86 190 7982 4068</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 EasyTaobao. Tous droits réservés.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="admin.html" style="color: #666; text-decoration: none; font-size: 0.9rem;">🔧
+                        Administration</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome pour les icônes -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

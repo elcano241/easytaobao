@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander - EasyTaobao</title>
+
+    <style>
+        /* REPRENDS LE STYLE DE TON SITE */
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #457b9d;
+            --accent: #ff9e00;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --success: #2a9d8f;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--dark);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* SECTION COMMANDE */
+        .commande-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+        }
+
+        .commande-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .commande-header h1 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-preview {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .product-preview h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .step {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        footer {
+            background: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .commande-container {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="EasyTaobao" class="logo-img">
+                    <span>Easy<span style="color: var(--accent);">Taobao</span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commander.html" style="color: var(--primary);">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <div class="container">
+        <div class="commande-container">
+            <div class="commande-header">
+                <h1>📦 Commander un produit</h1>
+                <p>Remplissez le formulaire pour passer votre commande</p>
+            </div>
+
+            <!-- Message d'alerte -->
+            <div id="alertMessage" class="alert hidden"></div>
+
+            <!-- Étapes -->
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Produit sélectionné</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Informations client</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>Envoi WhatsApp</div>
+                </div>
+            </div>
+
+            <!-- Prévisualisation du produit -->
+            <div id="productPreview" class="product-preview hidden">
+                <h3 id="productName">Nom du produit</h3>
+                <p id="productPrice">Prix: 0 FCFA</p>
+                <p id="productLink"><strong>Lien:</strong> <span id="productUrl"></span></p>
+            </div>
+
+            <!-- Formulaire de commande -->
+            <form id="commandeForm">
+                <div class="form-group">
+                    <label for="clientName">Nom complet *</label>
+                    <input type="text" id="clientName" required placeholder="Ex: Jean Nzikou">
+                </div>
+
+                <div class="form-group">
+                    <label for="clientPhone">Numéro de téléphone *</label>
+                    <input type="tel" id="clientPhone" required placeholder="Ex: +241 01 23 45 67">
+                </div>
+
+                <div class="form-group">
+                    <label for="clientAddress">Adresse de livraison *</label>
+                    <textarea id="clientAddress" required rows="3"
+                        placeholder="Votre adresse complète au Gabon"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientMessage">Message supplémentaire (optionnel)</label>
+                    <textarea id="clientMessage" rows="3"
+                        placeholder="Couleur, taille, ou autres informations..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-whatsapp">
+                    📱 Envoyer la commande par WhatsApp
+                </button>
+            </form>
+
+            <!-- Instructions -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                <h4 style="margin-bottom: 1rem;">📋 Comment ça marche ?</h4>
+                <p>1. Le produit que vous avez sélectionné est automatiquement inclus</p>
+                <p>2. Remplissez vos informations personnelles</p>
+                <p>3. Cliquez sur "Envoyer par WhatsApp"</p>
+                <p>4. Votre message sera pré-rempli sur WhatsApp</p>
+                <p>5. Envoyez le message pour finaliser votre commande</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Easy<span style="color: var(--accent);">Taobao</span></h3>
+                    <p>Votre pont vers Taobao au Gabon. Nous facilitons vos achats en Chine avec livraison directe au
+                        Gabon.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commander.html">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +241 01 23 45 67</li>
+                        <li><i class="fas fa-envelope"></i> contact@easytaobao.ga</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Libreville, Gabon</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 EasyTaobao. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Récupérer les paramètres de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name');
+        const productPrice = urlParams.get('price');
+        const productImage = urlParams.get('image');
+        const productUrl = urlParams.get('url');
+
+        // Éléments DOM
+        const productPreview = document.getElementById('productPreview');
+        const productNameElement = document.getElementById('productName');
+        const productPriceElement = document.getElementById('productPrice');
+        const productUrlElement = document.getElementById('productUrl');
+        const commandeForm = document.getElementById('commandeForm');
+        const alertMessage = document.getElementById('alertMessage');
+
+        // Afficher un message d'alerte
+        function showAlert(message, type = 'success') {
+            alertMessage.textContent = message;
+            alertMessage.className = `alert alert-${type}`;
+            alertMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                alertMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Initialisation de la page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Vérifier si on a des informations produit
+            if (productName && productPrice) {
+                // Afficher la prévisualisation du produit
+                productPreview.classList.remove('hidden');
+                productNameElement.textContent = productName;
+                productPriceElement.textContent = `Prix: ${parseInt(productPrice).toLocaleString()} FCFA`;
+
+                if (productUrl) {
+                    productUrlElement.textContent = productUrl;
+                } else {
+                    productUrlElement.textContent = "Lien non spécifié";
+                }
+
+                showAlert('✅ Produit sélectionné avec succès !');
+            } else {
+                showAlert('❌ Aucun produit sélectionné. Veuillez retourner à la page des produits.', 'error');
+            }
+        });
+
+        // Gestion du formulaire
+        commandeForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const clientName = document.getElementById('clientName').value;
+            const clientPhone = document.getElementById('clientPhone').value;
+            const clientAddress = document.getElementById('clientAddress').value;
+            const clientMessage = document.getElementById('clientMessage').value;
+
+            // Vérifier que le produit est sélectionné
+            if (!productName) {
+                showAlert('❌ Veuillez sélectionner un produit avant de commander.', 'error');
+                return;
+            }
+
+            // Créer le message WhatsApp
+            let whatsappMessage = `Bonjour EasyTaobao ! Je souhaite commander le produit suivant :\n\n`;
+            whatsappMessage += `📦 *PRODUIT:* ${productName}\n`;
+            whatsappMessage += `💰 *PRIX:* ${parseInt(productPrice).toLocaleString()} FCFA\n`;
+
+            if (productUrl) {
+                whatsappMessage += `🔗 *LIEN:* ${productUrl}\n`;
+            }
+
+            whatsappMessage += `\n👤 *MES INFORMATIONS:*\n`;
+            whatsappMessage += `• *Nom:* ${clientName}\n`;
+            whatsappMessage += `• *Téléphone:* ${clientPhone}\n`;
+            whatsappMessage += `• *Adresse:* ${clientAddress}\n`;
+
+            if (clientMessage) {
+                whatsappMessage += `\n💬 *MESSAGE SUPPLÉMENTAIRE:*\n${clientMessage}\n`;
+            }
+
+            whatsappMessage += `\nMerci de me confirmer la disponibilité et le délai de livraison !`;
+
+            // Encoder le message pour URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // Numéro WhatsApp (remplace par ton numéro)
+            const whatsappNumber = "24101234567"; // Ton numéro Gabon
+
+            // Rediriger vers WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+
+            showAlert('📱 Redirection vers WhatsApp... Vérifiez et envoyez le message !');
+        });
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

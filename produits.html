@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits - EasyTaobao</title>
+
+    <!-- CSS COMPLET AVEC DESIGN MODERNE -->
+    <style>
+        /* ===== VARIABLES ET RESET ===== */
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #457b9d;
+            --accent: #ff9e00;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --success: #2a9d8f;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--dark);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTIONS ===== */
+        .hero {
+            background: linear-gradient(rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.7)),
+                url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-details {
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-details:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-filter {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            margin: 0.25rem;
+        }
+
+        .btn-filter:hover,
+        .btn-filter.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* ===== SECTIONS PRINCIPALES ===== */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            color: var(--dark);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* ===== PRODUITS ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        /* ===== FILTRES ===== */
+        .filters {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .pagination .btn {
+            margin: 0 0.25rem;
+        }
+
+        .pagination .btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .filters {
+                padding: 1rem;
+            }
+
+            .btn-filter {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ===== EFFETS VISUELS ===== */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+    </style>
+</head>
+
+<body class="gradient-bg">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- REMPLACEZ "logo.png" PAR LE NOM DE VOTRE FICHIER LOGO -->
+                    <img src="logo.png" alt="EasyTaobao" class="logo-img">
+                    <span>Easy<span style="color: var(--accent);">Taobao</span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commande.html">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Découvrez tous nos produits</h1>
+            <p>Parcourez notre large sélection de produits Taobao disponibles au Gabon. Qualité garantie et prix
+                compétitifs.</p>
+        </div>
+    </section>
+
+    <!-- Contenu Principal -->
+    <main class="main-content fade-in">
+        <div class="container">
+            <!-- Section Produits -->
+            <section>
+                <h2 class="section-title">Tous nos produits</h2>
+
+                <!-- Filtres de catégories -->
+                <div class="filters">
+                    <button class="btn-filter active" onclick="filterProducts('all')">Tous</button>
+                    <button class="btn-filter" onclick="filterProducts('vetements')">Vêtements</button>
+                    <button class="btn-filter" onclick="filterProducts('electronique')">Électronique</button>
+                    <button class="btn-filter" onclick="filterProducts('maison')">Maison</button>
+                    <button class="btn-filter" onclick="filterProducts('accessoires')">Accessoires</button>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Produits chargés dynamiquement -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn btn-outline" onclick="changePage(-1)">Précédent</button>
+                    <button class="btn active">1</button>
+                    <button class="btn btn-outline" onclick="changePage(1)">Suivant</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Easy<span style="color: var(--accent);">Taobao</span></h3>
+                    <p>Votre pont vers Taobao au Gabon. Nous facilitons vos achats en Chine avec livraison directe au
+                        Gabon.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="commande.html">Commander</a></li>
+                        <li><a href="comment.html">Comment ça marche</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +86 190 7982 4068</li>
+                        <li><i class="fas fa-envelope"></i> contact@easytaobao.ga</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Libreville, Gabon</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 EasyTaobao. Tous droits réservés.</p>
+                <!-- Lien admin discret -->
+                <div style="margin-top: 1rem;">
+                    <a href="admin.html" style="color: #666; text-decoration: none; font-size: 0.9rem;">🔧
+                        Administration</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome pour les icônes -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Produits par défaut (si aucun produit dans le localStorage)
+        const defaultProducts = [
+            {
+                id: 1,
+                name: "T-shirt design unique",
+                price: 8500,
+                image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "vetements",
+                description: "T-shirt coton de haute qualité avec design unique"
+            },
+            {
+                id: 2,
+                name: "Chaussures de sport",
+                price: 25000,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "vetements",
+                description: "Chaussures de sport confortables et stylées"
+            },
+            {
+                id: 3,
+                name: "Montre intelligente",
+                price: 18500,
+                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "electronique",
+                description: "Montre connectée avec suivi d'activité"
+            },
+            {
+                id: 4,
+                name: "Écouteurs sans fil",
+                price: 12000,
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "electronique",
+                description: "Écouteurs Bluetooth avec réduction de bruit"
+            },
+            {
+                id: 5,
+                name: "Appareil photo compact",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "electronique",
+                description: "Appareil photo numérique haute résolution"
+            },
+            {
+                id: 6,
+                name: "Sac à dos design",
+                price: 15500,
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                category: "accessoires",
+                description: "Sac à dos spacieux et élégant"
+            }
+        ];
+
+        // Variables globales
+        let currentProducts = [];
+        let currentFilter = 'all';
+        let currentPage = 1;
+        const productsPerPage = 6;
+
+        // Charger les produits au démarrage
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProducts();
+            displayProducts();
+        });
+
+        // Charger les produits depuis le localStorage ou utiliser les produits par défaut
+        function loadProducts() {
+            const savedProducts = JSON.parse(localStorage.getItem('easytaobao_products'));
+
+            if (savedProducts && savedProducts.length > 0) {
+                currentProducts = savedProducts;
+            } else {
+                currentProducts = defaultProducts;
+                // Sauvegarder les produits par défaut
+                localStorage.setItem('easytaobao_products', JSON.stringify(defaultProducts));
+            }
+        }
+
+        // Afficher les produits
+        function displayProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+
+            // Filtrer les produits
+            let filteredProducts = currentProducts;
+            if (currentFilter !== 'all') {
+                filteredProducts = currentProducts.filter(product =>
+                    product.category === currentFilter
+                );
+            }
+
+            // Pagination
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+
+            if (productsToShow.length === 0) {
+                productsGrid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--gray); grid-column: 1 / -1;">
+                        <h3>Aucun produit trouvé</h3>
+                        <p>Essayez de changer de filtre ou ajoutez de nouveaux produits via l'administration.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Générer le HTML des produits
+            productsGrid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-img"
+                         onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">${parseInt(product.price).toLocaleString()} FCFA</p>
+                        ${product.description ? `<p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem;">${product.description}</p>` : ''}
+                        <div class="product-actions">
+                            <a href="commande.html?name=${encodeURIComponent(product.name)}&price=${product.price}&image=${encodeURIComponent(product.image)}&category=${product.category}${product.description ? '&description=' + encodeURIComponent(product.description) : ''}" 
+                               class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Commander
+                            </a>
+                            <button class="btn-details" onclick="showProductDetails(${product.id})">Détails</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Mettre à jour la pagination
+            updatePagination(filteredProducts.length);
+        }
+
+        // Filtrer les produits
+        function filterProducts(category) {
+            currentFilter = category;
+            currentPage = 1;
+
+            // Mettre à jour les boutons de filtre
+            document.querySelectorAll('.btn-filter').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            displayProducts();
+        }
+
+        // Changer de page
+        function changePage(direction) {
+            const totalProducts = currentFilter === 'all' ? currentProducts.length :
+                currentProducts.filter(p => p.category === currentFilter).length;
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+            currentPage += direction;
+
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            displayProducts();
+        }
+
+        // Mettre à jour la pagination
+        function updatePagination(totalProducts) {
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+            const paginationContainer = document.querySelector('.pagination');
+
+            let paginationHTML = `
+                <button class="btn btn-outline" onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''}>Précédent</button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHTML += `
+                    <button class="btn ${i === currentPage ? 'active' : 'btn-outline'}" onclick="currentPage = ${i}; displayProducts();">${i}</button>
+                `;
+            }
+
+            paginationHTML += `
+                <button class="btn btn-outline" onclick="changePage(1)" ${currentPage === totalPages ? 'disabled' : ''}>Suivant</button>
+            `;
+
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        // Afficher les détails du produit (fonctionnalité future)
+        function showProductDetails(productId) {
+            const product = currentProducts.find(p => p.id === productId);
+            if (product) {
+                alert(`Détails du produit:\n\nNom: ${product.name}\nPrix: ${product.price.toLocaleString()} FCFA\nCatégorie: ${product.category}\nDescription: ${product.description || 'Non spécifiée'}`);
+            }
+        }
+
+        // Rafraîchir l'affichage quand de nouveaux produits sont ajoutés via l'admin
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'easytaobao_products') {
+                loadProducts();
+                displayProducts();
+            }
+        });
+    </script>
+</body>
+
+</html>
